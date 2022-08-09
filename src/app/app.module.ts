@@ -9,6 +9,9 @@ import { PageContentComponent } from './Components/page-content/page-content.com
 import { IndexComponent } from './Components/index/index.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TablesComponent } from './pages/tables/tables.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './pages/login/login.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,11 +20,14 @@ import { TablesComponent } from './pages/tables/tables.component';
     PageContentComponent,
     IndexComponent,
     DashboardComponent,
-    TablesComponent
+    TablesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
