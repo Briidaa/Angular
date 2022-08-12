@@ -9,7 +9,7 @@ import { TablesComponent } from './pages/tables/tables.component';
 
 const routes: Routes = [
   {path:'', component: LoginComponent},
-{path:'register',component: RegisterComponent},
+  {path:'register',component: RegisterComponent},
 {
   path: 'admin',
   component:IndexComponent,

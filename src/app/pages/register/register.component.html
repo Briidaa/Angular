@@ -1,0 +1,158 @@
+
+<div class="register vh-100">
+  <div class="backbtn">
+    <img src = "../../../assets/icons8-left-24 (1).png" onclick ="history.back()" class =" icon rounded-circle bg-gradient-success">
+</div>
+  <div class="row">
+    <div class="col-md-3 register-left">
+      <img class="w-100" src="../../../assets/images/punologo.png" alt="" />
+
+      <input type="submit" class="text-white" name="" routerLink='/login' value="Login"
+        style="background-image: linear-gradient(green, rgb(72, 177, 72));" /><br />
+    </div>
+    <div class="col-md-9 register-right">
+
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <h3 class="register-heading text-success">Sign up</h3>
+          <form class="row register-form" [formGroup]="form" (ngSubmit)="submit()" ngNativeValidate>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="name" placeholder="First Name *" value="" />
+                <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+                  <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
+
+
+                  <div *ngIf="f['name'].errors && f['name'].errors['minlength']">Name should be 3 character.</div>
+                </div>
+
+              </div>
+
+              <div class="form-group">
+                <input type="email" class="form-control" formControlName="email" placeholder="Email *" value="" />
+                <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+                  <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
+                  <div *ngIf="f['email'].errors && f['email'].errors['email']">Please, enter valid email address.</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input type="password" class="form-control" formControlName="password" placeholder="Password *"
+                  value="" />
+                <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
+                  <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required.</div>
+
+
+                  <div *ngIf="f['password'].errors && f['password'].errors['minlength']">Password should be atleast 8
+                    characters long.</div>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <div class="form-group">
+                  <input type="password" class="form-control" formControlName="confirmPasswd"
+                    placeholder="Confirm Password *" value="" />
+                </div>
+
+                <div class="details text-danger" *ngIf="fieldsWithData()">{{message}}</div>
+                <span class="details text-danger" *ngIf="!passwordMatch()">{{passwordMessage}}</span>
+              </div>
+
+              <div class="form-group">
+                <select class="form-select form-control" formControlName="role" aria-label="Default select example">
+                  <option [selected]="true" value="role">Choose your role</option>
+                  <option value="FARMER">FARMER</option>
+                  <option value="INVESTOR">INVESTOR</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <input type="text" class="form-control" *ngIf="ifFARMER()" formControlName="location"
+                  placeholder="Enter location *" value="" />
+              </div>
+                      <div class="form-group">
+                        <input type="number" class="form-control" *ngIf="ifFARMER()" formControlName="amount_raised" placeholder="Enter amount raised *" value="" />
+                    </div>
+
+
+
+
+
+
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="lastname" placeholder="Last name *"
+                  value="" />
+                <div *ngIf="f['lastname'].touched && f['lastname'].invalid" class="alert alert-danger">
+                  <div *ngIf="f['lastname'].errors && f['lastname'].errors['required']">Last Name is required.</div>
+
+
+                  <div *ngIf="f['lastname'].errors && f['lastname'].errors['minlength']">Last Name should be atleast 3
+                    characters.</div>
+                </div>
+              </div>
+
+              <!-- <div class="form-group"> -->
+
+                
+
+              <div class="form-group">
+                <select class="form-select form-control" *ngIf="ifFARMER()" formControlName="farm_type"
+                  aria-label="Default select example">
+                  <option [selected]="true" value="farm_type">Choose farm type</option>
+                  <option value="2">Crop</option>
+                  <option value="3">Livestock</option>
+                  <option value="3">Chicken Farmer</option>
+                </select>
+
+              </div>
+
+              <div class="form-group">
+                <input type="number" class="form-control" *ngIf="ifFARMER()" formControlName="age"
+                  placeholder="Enter age *" value="" />
+              </div>
+
+              <div class="form-group">
+                <input type="number" class="form-control" *ngIf="ifFARMER()" formControlName="period"
+                  placeholder="Enter the duration *" value="" />
+              </div>
+
+
+
+              <div class="form-group">
+                <input type="number" class="form-control" *ngIf="ifFARMER()" formControlName="amount_raised"
+                  placeholder="Enter amount raised *" value="" />
+              </div>
+
+              <div class="form-group">
+                <input type="text" class="form-control" *ngIf="ifINVESTOR()" formControlName="country"
+                  placeholder="Enter country *" value="" />
+              </div>
+
+
+
+
+
+
+              <div class="form-group">
+                <input type="text" class="form-control" *ngIf="ifINVESTOR()" formControlName="refererral"
+                  placeholder="Enter referral *" value="" />
+              </div>
+
+              <input type="submit" class="btnRegister" id="submit" value="Register" />
+              <div class="details text-danger" *ngIf="fieldsWithData()">{{message}}</div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+</div>
