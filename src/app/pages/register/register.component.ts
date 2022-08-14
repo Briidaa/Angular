@@ -84,8 +84,8 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  ifFARMER(): Boolean {
-    if (this.form.value.role === "FARMER") {
+  ifTENANT(): Boolean {
+    if (this.form.value.role === "TENANT") {
       return true;
     }
     else {
@@ -93,8 +93,8 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  ifINVESTOR(): Boolean {
-    if (this.form.value.role === "INVESTOR") {
+  ifADMIN(): Boolean {
+    if (this.form.value.role === "ADMIN") {
       return true;
     }
     else {

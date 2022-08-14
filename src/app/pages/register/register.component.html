@@ -1,8 +1,8 @@
-
 <div class="register vh-100">
   <div class="backbtn">
-    <img src = "../../../assets/icons8-left-24 (1).png" onclick ="history.back()" class =" icon rounded-circle bg-gradient-success">
-</div>
+    <img src="../../../assets/icons8-left-24 (1).png" onclick="history.back()"
+      class=" icon rounded-circle bg-gradient-success">
+  </div>
   <div class="row">
     <div class="col-md-3 register-left">
       <img class="w-100" src="../../../assets/images/punologo.png" alt="" />
@@ -62,18 +62,19 @@
               <div class="form-group">
                 <select class="form-select form-control" formControlName="role" aria-label="Default select example">
                   <option [selected]="true" value="role">Choose your role</option>
-                  <option value="FARMER">FARMER</option>
-                  <option value="INVESTOR">INVESTOR</option>
+                  <option value="TENANT">TENANT</option>
+                  <option value="ADMIN">ADMIN</option>
                 </select>
               </div>
 
               <div class="form-group">
-                <input type="text" class="form-control" *ngIf="ifFARMER()" formControlName="location"
-                  placeholder="Enter location *" value="" />
+                <input type="numer" class="form-control" *ngIf="ifTENANT()" formControlName="location"
+                  placeholder="Enter ID No *" value="" />
               </div>
-                      <div class="form-group">
-                        <input type="number" class="form-control" *ngIf="ifFARMER()" formControlName="amount_raised" placeholder="Enter amount raised *" value="" />
-                    </div>
+              <div class="form-group">
+                <input type="number" class="form-control" *ngIf="ifTENANT()" formControlName="amount_raised"
+                  placeholder="Enter Stuff No *" value="" />
+              </div>
 
 
 
@@ -83,8 +84,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <input type="text" class="form-control" formControlName="lastname" placeholder="Last name *"
-                  value="" />
+                <input type="text" class="form-control" formControlName="lastname" placeholder="Last name *" value="" />
                 <div *ngIf="f['lastname'].touched && f['lastname'].invalid" class="alert alert-danger">
                   <div *ngIf="f['lastname'].errors && f['lastname'].errors['required']">Last Name is required.</div>
 
@@ -96,49 +96,102 @@
 
               <!-- <div class="form-group"> -->
 
-                
+                <div class="form-group">
+                  <input type="number" class="form-control" formControlName="amount_raised"
+                    placeholder="Phone No *" value="" />
+                </div>
 
               <div class="form-group">
-                <select class="form-select form-control" *ngIf="ifFARMER()" formControlName="farm_type"
+                <select class="form-select form-control" *ngIf="ifTENANT()" formControlName="farm_type"
                   aria-label="Default select example">
-                  <option [selected]="true" value="farm_type">Choose farm type</option>
-                  <option value="2">Crop</option>
-                  <option value="3">Livestock</option>
-                  <option value="3">Chicken Farmer</option>
+                  <option [selected]="true" value="farm_type">Choose Rank</option>
+                  <option value="LtGen">General</option>
+                  <option value="MajorGen">Major General</option>
+                  <option value="Brig">Brigdier</option>
+
+
+
+                  <option value="Col">Colonel</option>
+
+
+
+                  <option value="LtCol">Lieutenant Colonel</option>
+
+
+
+                  <option value="Capt">Captain</option>
+
+
+
+                  <option value="WO">Warrant Officer</option>
+
+
+
+                  <option value="Sgt">Sargent</option>
+
+
+
+                  <option value="Const">Constable</option>
+
+
+
+                  <option value="AC">Admin Clerk</option>
+
+
+
+                  <option value="Sec">Secretary</option>
+
+
+
+                  <option value="PA">Personal Assistance</option>
+
                 </select>
 
               </div>
 
               <div class="form-group">
-                <input type="number" class="form-control" *ngIf="ifFARMER()" formControlName="age"
-                  placeholder="Enter age *" value="" />
-              </div>
-
-              <div class="form-group">
-                <input type="number" class="form-control" *ngIf="ifFARMER()" formControlName="period"
-                  placeholder="Enter the duration *" value="" />
-              </div>
+                <select class="form-select form-control" *ngIf="ifTENANT()" formControlName="farm_type"
+                  aria-label="Default select example">
+                  <option [selected]="true" value="farm_type">Choose Building</option>
+                  <option value="Del">Delheim</option>
 
 
 
-              <div class="form-group">
-                <input type="number" class="form-control" *ngIf="ifFARMER()" formControlName="amount_raised"
-                  placeholder="Enter amount raised *" value="" />
-              </div>
-
-              <div class="form-group">
-                <input type="text" class="form-control" *ngIf="ifINVESTOR()" formControlName="country"
-                  placeholder="Enter country *" value="" />
-              </div>
+                <option value="Eik">Eikendal</option>
 
 
 
+                <option value="PPE">Post Park East</option>
 
 
 
-              <div class="form-group">
-                <input type="text" class="form-control" *ngIf="ifINVESTOR()" formControlName="refererral"
-                  placeholder="Enter referral *" value="" />
+                <option value="PPN">Post Park North</option>
+
+
+
+                <option value="PPS">Post Park South</option>
+
+
+
+                <option value="DRT">Drostdy</option>
+
+
+
+                <option value="BDL">Boschendal</option>
+
+
+
+                <option value="DRK">Drakestein</option>
+
+
+
+                <option value="NDB">Nederburg</option>
+
+
+
+                <option value="GRC">Groot Constantia</option>
+                </select>
+                
               </div>
 
               <input type="submit" class="btnRegister" id="submit" value="Register" />
