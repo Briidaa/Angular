@@ -1,63 +1,212 @@
+<div class="register vh-100">
+  <div class="backbtn">
+    <img src="../../../assets/icons8-left-24 (1).png" onclick="history.back()"
+      class=" icon rounded-circle bg-gradient-success">
+  </div>
+  <div class="row">
+    <div class="col-md-3 register-left">
+      <img class="w-100" src="../../../assets/images/punologo.png" alt="" />
 
-    <div class="container">
-        <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="card-body p-0">
-                <!-- Nested Row within Card Body -->
-                <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-                    <div class="col-lg-7">
-                        <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-                            </div>
-                            <form class="user">
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
-                                    </div>
-                                </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a>
-                                <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a>
-                            </form>
-                            <hr>
-                            <div class="text-center">
-                                <a class="small" routerLink="/forgot-password">Forgot Password?</a>
-                            </div>
-                            <div class="text-center">
-                                <a class="small" routerLink="/login">Already have an account? Login!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <input type="submit" class="text-white" name="" routerLink='/login' value="Login"
+        style="background-image: linear-gradient(green, rgb(72, 177, 72));" /><br />
     </div>
+    <div class="col-md-9 register-right">
+
+
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <h3 class="register-heading text-success">Sign up</h3>
+          <form class="row register-form" [formGroup]="form" (ngSubmit)="submit()" ngNativeValidate>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="name" placeholder="First Name *" value="" />
+                <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+                  <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
+
+
+                  <div *ngIf="f['name'].errors && f['name'].errors['minlength']">Name should be 3 character.</div>
+                </div>
+
+              </div>
+
+              <div class="form-group">
+                <input type="email" class="form-control" formControlName="email" placeholder="Email *" value="" />
+                <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+                  <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
+                  <div *ngIf="f['email'].errors && f['email'].errors['email']">Please, enter valid email address.</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input type="password" class="form-control" formControlName="password" placeholder="Password *"
+                  value="" />
+                <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
+                  <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required.</div>
+
+
+                  <div *ngIf="f['password'].errors && f['password'].errors['minlength']">Password should be atleast 8
+                    characters long.</div>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <div class="form-group">
+                  <input type="password" class="form-control" formControlName="confirmPasswd"
+                    placeholder="Confirm Password *" value="" />
+                </div>
+
+                <div class="details text-danger" *ngIf="fieldsWithData()">{{message}}</div>
+                <span class="details text-danger" *ngIf="!passwordMatch()">{{passwordMessage}}</span>
+              </div>
+
+              <div class="form-group">
+                <select class="form-select form-control" formControlName="role" aria-label="Default select example">
+                  <option [selected]="true" value="role">Choose your role</option>
+                  <option value="TENANT">TENANT</option>
+                  <option value="ADMIN">ADMIN</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <input type="numer" class="form-control" *ngIf="ifTENANT()" formControlName="location"
+                  placeholder="Enter ID No *" value="" />
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control" *ngIf="ifTENANT()" formControlName="amount_raised"
+                  placeholder="Enter Stuff No *" value="" />
+              </div>
+
+
+
+
+
+
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="lastname" placeholder="Last name *" value="" />
+                <div *ngIf="f['lastname'].touched && f['lastname'].invalid" class="alert alert-danger">
+                  <div *ngIf="f['lastname'].errors && f['lastname'].errors['required']">Last Name is required.</div>
+
+
+                  <div *ngIf="f['lastname'].errors && f['lastname'].errors['minlength']">Last Name should be atleast 3
+                    characters.</div>
+                </div>
+              </div>
+
+              <!-- <div class="form-group"> -->
+
+                <div class="form-group">
+                  <input type="number" class="form-control" formControlName="amount_raised"
+                    placeholder="Phone No *" value="" />
+                </div>
+
+              <div class="form-group">
+                <select class="form-select form-control" *ngIf="ifTENANT()" formControlName="farm_type"
+                  aria-label="Default select example">
+                  <option [selected]="true" value="farm_type">Choose Rank</option>
+                  <option value="LtGen">General</option>
+                  <option value="MajorGen">Major General</option>
+                  <option value="Brig">Brigdier</option>
+
+
+
+                  <option value="Col">Colonel</option>
+
+
+
+                  <option value="LtCol">Lieutenant Colonel</option>
+
+
+
+                  <option value="Capt">Captain</option>
+
+
+
+                  <option value="WO">Warrant Officer</option>
+
+
+
+                  <option value="Sgt">Sargent</option>
+
+
+
+                  <option value="Const">Constable</option>
+
+
+
+                  <option value="AC">Admin Clerk</option>
+
+
+
+                  <option value="Sec">Secretary</option>
+
+
+
+                  <option value="PA">Personal Assistance</option>
+
+                </select>
+
+              </div>
+
+              <div class="form-group">
+                <select class="form-select form-control" *ngIf="ifTENANT()" formControlName="farm_type"
+                  aria-label="Default select example">
+                  <option [selected]="true" value="farm_type">Choose Building</option>
+                  <option value="Del">Delheim</option>
+
+
+
+                <option value="Eik">Eikendal</option>
+
+
+
+                <option value="PPE">Post Park East</option>
+
+
+
+                <option value="PPN">Post Park North</option>
+
+
+
+                <option value="PPS">Post Park South</option>
+
+
+
+                <option value="DRT">Drostdy</option>
+
+
+
+                <option value="BDL">Boschendal</option>
+
+
+
+                <option value="DRK">Drakestein</option>
+
+
+
+                <option value="NDB">Nederburg</option>
+
+
+
+                <option value="GRC">Groot Constantia</option>
+                </select>
+                
+              </div>
+
+              <input type="submit" class="btnRegister" id="submit" value="Register" />
+              <div class="details text-danger" *ngIf="fieldsWithData()">{{message}}</div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+  </div>
 
 </div>
