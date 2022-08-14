@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: 'app-add-visitor',
+  templateUrl: './add-visitor.component.html',
+  styleUrls: ['./add-visitor.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class AddVisitorComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
 
@@ -29,5 +29,4 @@ export class DashboardComponent implements OnInit {
   submit() {
     
   }
-
 }

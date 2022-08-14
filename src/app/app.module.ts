@@ -12,6 +12,8 @@ import { TablesComponent } from './pages/tables/tables.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ResultComponent } from './pages/result/result.component';
+import { AddVisitorComponent } from './pages/add-visitor/add-visitor.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { RegisterComponent } from './pages/register/register.component';
     DashboardComponent,
     TablesComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ResultComponent,
+    AddVisitorComponent
   ],
   imports: [
     BrowserModule,

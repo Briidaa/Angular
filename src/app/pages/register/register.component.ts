@@ -125,6 +125,12 @@ export class RegisterComponent implements OnInit {
 
       //console.log(this.form.value);
 
+      if (this.form.value.role === "TENANT") {
+        this.router.navigate(['/success']);
+      }
+      else {
+        this.router.navigate(['/']);
+      }
      
     }
 
