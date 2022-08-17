@@ -14,6 +14,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ResultComponent } from './pages/result/result.component';
 import { AddVisitorComponent } from './pages/add-visitor/add-visitor.component';
+import { TenantComponent } from './pages/tenant/tenant.component';
+import { CheckedinComponent } from './pages/checkedin/checkedin.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { AddVisitorComponent } from './pages/add-visitor/add-visitor.component';
     LoginComponent,
     RegisterComponent,
     ResultComponent,
-    AddVisitorComponent
+    AddVisitorComponent,
+    TenantComponent,
+    CheckedinComponent
   ],
   imports: [
     BrowserModule,
