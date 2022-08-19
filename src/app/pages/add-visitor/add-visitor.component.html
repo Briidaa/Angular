@@ -558,11 +558,11 @@
                 </div>
                 <div class="form-group">
                   <input
-                    type="email"
+                    type="number"
                     class="form-control form-control-user"
                     id="exampleInputEmail"
-                    formControlName="email"
-                    placeholder="Email Address"
+                    formControlName="id_no"
+                    placeholder="ID Number"
                   />
                 </div>
 
@@ -575,26 +575,8 @@
                     placeholder="Phone number"
                   />
                 </div>
-                <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input
-                      type="number"
-                      class="form-control form-control-user"
-                      id="exampleInputPassword"
-                      formControlName="age"
-                      placeholder="Age"
-                    />
-                  </div>
-                  <div class="col-sm-6">
-                    <input
-                      type="number"
-                      class="form-control form-control-user"
-                      id="exampleRepeatPassword"
-                      formControlName="period"
-                      placeholder="Years of farming"
-                    />
-                  </div>
-                </div>
+                
+                
                 <!-- <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input
@@ -615,40 +597,9 @@
                     />
                   </div>
                 </div> -->
-                <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                      <input
-                        type="text"
-                        class="form-control form-control-user"
-                        id="exampleInputPassword"
-                        formControlName="location"
-                        placeholder="Address"
-                      />
-                    </div>
-                    <div class="col-sm-6">
-                      <input
-                        type="text"
-                        class="form-control form-control-user"
-                        id="exampleRepeatPassword"
-                        formControlName="farm_type"
-                        placeholder="Type of farming"
-                      />
-                      <!-- <select class="form-control form-control-user"  id="exampleRepeatPassword" formControlName="farm_type" aria-label="Default select example">
-                        <option [selected]="true" value="">Type of farming</option>
-                        <option value="ANIMAL">ANIMAL</option>
-                        <option value="CROP">CROP</option>
-                      </select> -->
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                   <textarea 
-                   class="form-control form-control-user"
-                   id="exampleInputEmail"
-                   formControlName="farm_description"
-                   placeholder="Farm description"></textarea>
-                  </div>
-                <a  (click)="submit()" class="btn btn-success btn-user btn-block text-light">
+                
+                   
+                <a  (click)="submit()" class="btn btn-primary btn-user btn-block text-light">
                   Add Farmer
                 </a>
                 <hr />

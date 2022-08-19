@@ -32,15 +32,10 @@ export class RegisterComponent implements OnInit {
       confirmPasswd: new FormControl('', [Validators.minLength(8), Validators.required]),
       lastname: new FormControl('', [Validators.minLength(3), Validators.required]),
       role: new FormControl('', [Validators.required]),
-      age: new FormControl('', [Validators.required]),
-      farm_type: new FormControl('', [Validators.required]),
-      period: new FormControl('', [Validators.required]),
-      location: new FormControl('', [Validators.required]),
-      amount_raised: new FormControl('', [Validators.required]),
-      country: new FormControl('', [Validators.required]),
-      refererral: new FormControl('', [Validators.required]),
-
-
+      rank: new FormControl('', [Validators.required]),
+      id_no: new FormControl('', [Validators.required]),
+      stuff_no: new FormControl('', [Validators.required]),
+      building: new FormControl('', [Validators.required])
     });
 
   }
@@ -123,7 +118,7 @@ export class RegisterComponent implements OnInit {
       formData.append('refererral', this.form.value.refererral);
       formData.append('investor_description', this.form.value.investor_description);
 
-      //console.log(this.form.value);
+      console.log(this.form.value);
 
       if (this.form.value.role === "TENANT") {
         this.router.navigate(['/success']);
