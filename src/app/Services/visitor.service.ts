@@ -8,5 +8,11 @@ import { environment } from 'src/environments/environment';
 })
 export class VisitorService {
 
+  BaseUrl = environment.devbaseUrl+'admin/';
+  
   constructor(private http: HttpClient) { }
+
+  addVisitor(data: any): Observable<any>{
+    return this.http.post(this.BaseUrl+'visitor/add',data);
+  }
 }
