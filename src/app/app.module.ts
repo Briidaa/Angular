@@ -16,6 +16,7 @@ import { ResultComponent } from './pages/result/result.component';
 import { AddVisitorComponent } from './pages/add-visitor/add-visitor.component';
 import { TenantComponent } from './pages/tenant/tenant.component';
 import { CheckedinComponent } from './pages/checkedin/checkedin.component';
+import { AssignTenantComponent } from './pages/assign-tenant/assign-tenant.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { CheckedinComponent } from './pages/checkedin/checkedin.component';
     ResultComponent,
     AddVisitorComponent,
     TenantComponent,
-    CheckedinComponent
+    CheckedinComponent,
+    AssignTenantComponent
   ],
   imports: [
     BrowserModule,
