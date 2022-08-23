@@ -21,7 +21,7 @@ const routes: Routes = [
   children: [
     {path:'', component: DashboardComponent},
     {path: 'tables',component: TablesComponent},
-    {path:'visitor', component: AddVisitorComponent},
+    {path:'visitor/:id', component: AddVisitorComponent},
     {path:'tenant/all', component: TenantComponent},
     {path:'tenant/checkin', component: CheckedinComponent}
   ]

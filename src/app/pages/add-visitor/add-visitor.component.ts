@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { VisitorService } from 'src/app/Services/visitor.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class AddVisitorComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder, private visitorService: VisitorService) { }
+  constructor(private formBuilder: FormBuilder, private visitorService: VisitorService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -29,7 +30,10 @@ export class AddVisitorComponent implements OnInit {
     + currentdate.getMinutes() + ":" 
     + currentdate.getSeconds();
 
+    let  id = this.activatedRoute.snapshot.paramMap.get('id');
+
     const data = {
+      tenantID: id,
       name: this.form.value.name,
       lastname: this.form.value.lastname,
       id_no: this.form.value.id_no,
@@ -46,7 +50,7 @@ export class AddVisitorComponent implements OnInit {
       next: res =>{
         alert('Visitor Add');
       },error: err =>{
-        alert(err);
+        alert('err');
       }
     })
     

@@ -20,6 +20,7 @@
                         <th>Rank</th>
                         <th>Staff No</th>
                         <th>Action</th>
+                        <th>Visitor</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -30,6 +31,7 @@
                         <th>Rank</th>
                         <th>Staff No</th>
                         <th>Action</th>
+                        <th>Visitor</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -41,6 +43,9 @@
                         <td>{{tenant.stuff_no}}</td>
                         <td>
                             <button *ngIf="tenant.checkedin" class="btn bg-danger text-light mt-2" (click)="checkedout(tenant.userid)">Check Out</button>
+                        </td>
+                        <td>
+                            <a *ngIf="tenant.checkedin" class="btn bg-success text-light mt-2" [routerLink]="['/admin/visitor',tenant.id]">Add</a>
                         </td>
                     </tr>
                 </tbody>
