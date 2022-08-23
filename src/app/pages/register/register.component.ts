@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,7 @@ export class RegisterComponent implements OnInit {
   password_matched: boolean = false;
   strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
 
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
     this.create();
@@ -100,32 +101,23 @@ export class RegisterComponent implements OnInit {
   submit(): void {
     if (this.passwordMatch()) {
       this.messages();
-     
-      const formData = new FormData()
-      formData.append('name', this.form.value.name);
-      formData.append('email', this.form.value.email);
-      formData.append('phoneNumber', this.form.value.phoneNumber);
-      formData.append('password', this.form.value.name);
-      formData.append('lastname', this.form.value.lastname);
-      formData.append('role', this.form.value.role);
-      formData.append('age', this.form.value.role);
-      formData.append('farm_type', this.form.value.farm_type);
-      formData.append('period', this.form.value.period);
-      formData.append('location', this.form.value.location);
-      formData.append('farm_description', this.form.value.farm_description);
-      formData.append('amount_raised', this.form.value.amount_raised);
-      formData.append('country', this.form.value.country);
-      formData.append('refererral', this.form.value.refererral);
-      formData.append('investor_description', this.form.value.investor_description);
 
       console.log(this.form.value);
 
-      if (this.form.value.role === "TENANT") {
-        this.router.navigate(['/success']);
-      }
-      else {
-        this.router.navigate(['/']);
-      }
+      this.userService.userRegister(this.form.value)
+      .subscribe({ next: res => {
+        console.log(res);
+        
+
+        if (this.form.value.role === "TENANT") {
+          this.router.navigate(['/success']);
+        }
+        else {
+          this.router.navigate(['/']);
+        }
+      }, error: err=> {
+        alert(err)
+      }})
      
     }
 

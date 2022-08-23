@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { VisitorService } from 'src/app/Services/visitor.service';
 
 @Component({
   selector: 'app-add-visitor',
@@ -10,7 +11,7 @@ export class AddVisitorComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private visitorService: VisitorService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -22,6 +23,32 @@ export class AddVisitorComponent implements OnInit {
   }
 
   submit() {
+    let currentdate = new Date();
+
+    let time = + currentdate.getHours() + ":"  
+    + currentdate.getMinutes() + ":" 
+    + currentdate.getSeconds();
+
+    const data = {
+      name: this.form.value.name,
+      lastname: this.form.value.lastname,
+      id_no: this.form.value.id_no,
+      phoneNumber: this.form.value.phoneNumber,
+      time_in: time,
+      time_out: null,
+      checkedout: false
+    }
+
+    console.log(data);
+
+    this.visitorService.addVisitor(data)
+    .subscribe({
+      next: res =>{
+        alert('Visitor Add');
+      },error: err =>{
+        alert(err);
+      }
+    })
     
   }
 }

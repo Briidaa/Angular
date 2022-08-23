@@ -33,38 +33,15 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>0725589586</td>
-                        <td>Bulding 10 B4</td>
-                        <td>General</td>
-                        <td>635654</td>
-                        <td><button class="btn bg-danger text-light mt-2">Check Out</button></td>
-                    </tr>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>0725589586</td>
-                        <td>Bulding 10 B4</td>
-                        <td>General</td>
-                        <td>635654</td>
-                        <td><button class="btn bg-danger text-light mt-2">Check Out</button></td>
-                    </tr>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>0725589586</td>
-                        <td>Bulding 10 B4</td>
-                        <td>General</td>
-                        <td>635654</td>
-                        <td><button class="btn bg-danger text-light mt-2">Check Out</button></td>
-                    </tr>
-                   
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>0725589586</td>
-                        <td>Bulding 10 B4</td>
-                        <td>General</td>
-                        <td>635654</td>
-                        <td><button class="btn bg-danger text-light mt-2">Check Out</button></td>
+                    <tr *ngFor="let tenant of tenantsIn">
+                        <td>{{tenant.name}} {{tenant.lastname}}</td>
+                        <td>{{tenant.phonenumber}}</td>
+                        <td>{{tenant.building}}</td>
+                        <td>{{tenant.rank}}</td>
+                        <td>{{tenant.stuff_no}}</td>
+                        <td>
+                            <button *ngIf="tenant.checkedin" class="btn bg-danger text-light mt-2" (click)="checkedout(tenant.userid)">Check Out</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

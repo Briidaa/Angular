@@ -17,6 +17,7 @@ import { AddVisitorComponent } from './pages/add-visitor/add-visitor.component';
 import { TenantComponent } from './pages/tenant/tenant.component';
 import { CheckedinComponent } from './pages/checkedin/checkedin.component';
 import { AssignTenantComponent } from './pages/assign-tenant/assign-tenant.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { AssignTenantComponent } from './pages/assign-tenant/assign-tenant.compo
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
