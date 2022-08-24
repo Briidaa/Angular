@@ -18,6 +18,7 @@ import { TenantComponent } from './pages/tenant/tenant.component';
 import { CheckedinComponent } from './pages/checkedin/checkedin.component';
 import { AssignTenantComponent } from './pages/assign-tenant/assign-tenant.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CardSliderComponent } from './Components/card-slider/card-slider.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     AddVisitorComponent,
     TenantComponent,
     CheckedinComponent,
-    AssignTenantComponent
+    AssignTenantComponent,
+    CardSliderComponent
   ],
   imports: [
     BrowserModule,
