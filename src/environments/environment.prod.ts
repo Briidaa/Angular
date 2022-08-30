@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  devbaseUrl: "https://visitormash-app.herokuapp.com/api/visitor/"
 };

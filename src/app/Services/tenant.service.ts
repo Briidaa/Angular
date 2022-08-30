@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class TenantService {
 
-  BaseUrl = environment.devbaseUrl+'tenant/';
+  BaseUrl = environment.devbaseUrl+'tenant';
   
   constructor(private http: HttpClient) { }
 

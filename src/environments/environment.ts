@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  devbaseUrl: 'http://localhost:4000/api/visitor/'
+  devbaseUrl: 'https://visitormash-app.herokuapp.com/api/visitor/'
 }
 
 /*
