@@ -50,7 +50,8 @@ export class AddVisitorComponent implements OnInit {
       next: res =>{
         alert('Visitor Add');
       },error: err =>{
-        alert('err');
+        // alert('err');
+        this.router.navigate(['/admin']);
       }
     })
     

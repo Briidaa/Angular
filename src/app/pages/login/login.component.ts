@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   password1Shown: boolean = false;
   password2Shown: boolean = false;
 
-  constructor(private fb:FormBuilder, private router: Router) { }
+  constructor(private fb:FormBuilder, private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -23,7 +24,21 @@ export class LoginComponent implements OnInit {
   } 
 
   onSubmit() {
-    this.router.navigate(['/admin']);
+
+    this.userService.userLogin(this.form.value)
+    .subscribe({ next: res => {
+      console.log(res);
+      
+
+      if (res.user.role === "ADMIN") {
+        this.router.navigate(['/admin']);
+      }
+      else {
+        this.router.navigate(['/']);
+      }
+    }, error: err=> {
+      alert(err)
+    }})
   }
 
   get f() {

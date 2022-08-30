@@ -15,4 +15,12 @@ export class VisitorService {
   addVisitor(data: any): Observable<any>{
     return this.http.post(this.BaseUrl+'visitor/add',data);
   }
+
+  getCheckinVisitors():Observable<any>{
+    return this.http.get(this.BaseUrl+"visitor/checkedin");
+  }
+
+  checkoutVisitor(data: any): Observable<any>{
+    return this.http.put(this.BaseUrl+"visitor/checkout",data);
+  }
 }
