@@ -20,6 +20,8 @@ export class TablesComponent implements OnInit {
     this.visitorService.getCheckinVisitors()
     .subscribe( res => {
       this.allVisitor = res;
+      console.log(this.allVisitor);
+      
     })
   }
 
