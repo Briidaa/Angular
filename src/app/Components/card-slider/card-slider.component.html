@@ -458,23 +458,26 @@
     </button>
  </div> -->
  <ngx-ui-loader fgsColor="#15ef03"></ngx-ui-loader>
- 
-<div class="container-flui d-flex">
-   <div class="card" *ngFor="let tenant of allTenant">
-      <div class="card-body">
-         <h5 class="card-title">{{tenant.name}} {{tenant.lastname}}</h5>
-         <p class="card-text"><i>EmpNo: {{tenant.stuff_no}}</i></p>
-         <p class="card-text"><i>Building: {{tenant.building}}</i></p>
-         <div class="socials d-flex justify-content-between">
-          <div class="email">
-              <button *ngIf="tenant.checkedin" class="btn bg-danger text-light mt-2" (click)="checkedout(tenant.userid)">Check Out</button>
-              <button *ngIf="!tenant.checkedin" class="btn bg-primary text-light mt-2" (click)="checkedin(tenant.userid)">Check In</button>
-            </div>
 
-            <div class="linkedin">
-              <a *ngIf="tenant.checkedin" class="btn bg-success text-light mt-2" [routerLink]="['/admin/visitor',tenant.id]">Add Visitor</a>
+<div class="containe d-flex">
+   <div class="row mt-1">
+      <div class="card col-md-6 col-lg-4 mt-2" *ngFor="let tenant of allTenant">
+         <div class="card-body">
+            <h5 class="card-title">{{tenant.name}} {{tenant.lastname}}</h5>
+            <p class="card-text"><i>EmpNo: {{tenant.stuff_no}}</i></p>
+            <p class="card-text"><i>Building: {{tenant.building}}</i></p>
+            <div class="socials d-flex justify-content-between">
+             <div class="email">
+                 <button *ngIf="tenant.checkedin" class="btn bg-danger text-light mt-2" (click)="checkedout(tenant.userid)">Check Out</button>
+                 <button *ngIf="!tenant.checkedin" class="btn bg-primary text-light mt-2" (click)="checkedin(tenant.userid)">Check In</button>
+               </div>
+   
+               <div class="linkedin">
+                 <a *ngIf="tenant.checkedin" class="btn bg-success text-light mt-2" [routerLink]="['/admin/visitor',tenant.id]">Add Visitor</a>
+               </div>
             </div>
          </div>
       </div>
    </div>
+   
 </div>

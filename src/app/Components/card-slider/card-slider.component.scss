@@ -20,8 +20,8 @@
   }
   
   .card {
-    margin: 0 1em;
-    width: calc(100%/3);
+    // margin: 0 1em;
+    // width: calc(100%/3);
     box-shadow: 0 8px 20px -4px #95abbb;
     transition: transform .6s ease;
   }
@@ -30,14 +30,14 @@
     transform: scale(1.05);
   }
   
-  @media screen and (max-width: 950px){
-    .card:not(:first-child) {
-      display: none;
-    }
+  // @media screen and (max-width: 950px){
+  //   .card:not(:first-child) {
+  //     display: none;
+  //   }
   
-    .card {
-      width: calc(80%/1);
-    }
+  //   .card {
+  //     // width: calc(80%/1);
+  //   }
   
     
-  }
+  // }
