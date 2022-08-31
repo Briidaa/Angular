@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TenantService } from 'src/app/Services/tenant.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-card-slider',
@@ -10,7 +11,7 @@ export class CardSliderComponent implements OnInit {
 
   allTenant: any;
 
-  constructor(private tenantService: TenantService) { }
+  constructor(private tenantService: TenantService, private ngxLoader: NgxUiLoaderService ) { }
 
   ngOnInit(): void {
     this.getTenants();
@@ -32,6 +33,7 @@ export class CardSliderComponent implements OnInit {
   }
 
   checkedin(id: any){
+    this.ngxLoader.start();
     let currentdate = new Date();
 
     let time = + currentdate.getHours() + ":"  
@@ -50,9 +52,11 @@ export class CardSliderComponent implements OnInit {
     .subscribe({
       next: res =>{
         console.log(res);
+        this.ngxLoader.stop();
         this.ngOnInit();
 
       }, error: err =>{
+        this.ngxLoader.stop();
         console.log(err);
         
       }
@@ -61,7 +65,7 @@ export class CardSliderComponent implements OnInit {
   }
 
   checkedout(id: any){
-
+    this.ngxLoader.start();
     let currentdate = new Date();
 
     let time = + currentdate.getHours() + ":"  
@@ -80,9 +84,11 @@ export class CardSliderComponent implements OnInit {
     .subscribe({
       next: res =>{
         console.log(res);
+        this.ngxLoader.stop();
         this.ngOnInit();
 
       }, error: err =>{
+        this.ngxLoader.stop();
         console.log(err);
         
       }

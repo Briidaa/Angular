@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
+import Swal from 'sweetalert2';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +20,7 @@ export class RegisterComponent implements OnInit {
   password_matched: boolean = false;
   strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService, private ngxLoader: NgxUiLoaderService) { }
 
   ngOnInit(): void {
     this.create();
@@ -102,12 +104,27 @@ export class RegisterComponent implements OnInit {
     if (this.passwordMatch()) {
       this.messages();
 
+      this.ngxLoader.start();
+
       console.log(this.form.value);
 
       this.userService.userRegister(this.form.value)
       .subscribe({ next: res => {
         console.log(res);
         
+        Swal.fire(
+          {
+            title: 'Successful Registered',
+            text: 'Welcome',
+            timer: 4000,
+            showConfirmButton: false,
+            color: 'green'
+          }
+        )
+
+        Swal.update({
+          icon: 'success'
+        })
 
         if (this.form.value.role === "TENANT") {
           this.router.navigate(['/success']);
@@ -115,8 +132,18 @@ export class RegisterComponent implements OnInit {
         else {
           this.router.navigate(['/']);
         }
+        this.ngxLoader.stop();
       }, error: err=> {
-        alert(err)
+        this.ngxLoader.stop();
+            Swal.fire(
+              {
+                icon: 'error',
+                title: err.error.message,
+                showConfirmButton: false,
+                timer: 1900,
+                width: '300px'
+              }
+            )
       }})
      
     }

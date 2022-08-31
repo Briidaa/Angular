@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ExcelService } from 'src/app/Services/excel.service';
 import { TenantService } from 'src/app/Services/tenant.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class TenantComponent implements OnInit {
 
   allTenant: any;
 
-  constructor(private tenantService: TenantService) { }
+  constructor(private tenantService: TenantService, private excelService: ExcelService) { }
 
   ngOnInit(): void {
     this.getTenants();
@@ -88,4 +89,9 @@ export class TenantComponent implements OnInit {
       }
     })
   }
+
+  exportAsXLSX():void {
+    this.excelService.exportAsExcelFile(this.allTenant, 'All Tenants');
+  }
+
 }

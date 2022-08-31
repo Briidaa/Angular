@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
+import Swal from 'sweetalert2';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,7 @@ export class LoginComponent implements OnInit {
   password1Shown: boolean = false;
   password2Shown: boolean = false;
 
-  constructor(private fb:FormBuilder, private router: Router, private userService: UserService) { }
+  constructor(private fb:FormBuilder, private router: Router, private userService: UserService, private ngxLoader: NgxUiLoaderService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -24,11 +26,24 @@ export class LoginComponent implements OnInit {
   } 
 
   onSubmit() {
-
+    this.ngxLoader.start();
     this.userService.userLogin(this.form.value)
     .subscribe({ next: res => {
       console.log(res);
       
+      Swal.fire(
+        {
+          title: 'LoggedIn',
+          text: 'Welcome',
+          timer: 4000,
+          showConfirmButton: false,
+          color: 'green'
+        }
+      )
+
+      Swal.update({
+        icon: 'success'
+      })
 
       if (res.user.role === "ADMIN") {
         this.router.navigate(['/admin']);
@@ -36,8 +51,18 @@ export class LoginComponent implements OnInit {
       else {
         this.router.navigate(['/']);
       }
+      this.ngxLoader.stop()
     }, error: err=> {
-      alert(err)
+      this.ngxLoader.stop();
+      Swal.fire(
+        {
+          icon: 'error',
+          title: err.error.message,
+          showConfirmButton: false,
+          timer: 1900,
+          width: '300px'
+        }
+      )
     }})
   }
 
