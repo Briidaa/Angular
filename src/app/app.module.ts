@@ -40,7 +40,7 @@ import { CardSliderComponent } from './Components/card-slider/card-slider.compon
     CardSliderComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
