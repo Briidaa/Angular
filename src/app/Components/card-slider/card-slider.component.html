@@ -459,9 +459,9 @@
  </div> -->
  <ngx-ui-loader fgsColor="#15ef03"></ngx-ui-loader>
 
-<div class="containe d-flex">
-   <div class="row mt-1">
-      <div class="card col-md-6 col-lg-4 mt-2" *ngFor="let tenant of allTenant">
+<div class="containe d-flex row">
+   <div class="row d-flex mt-1">
+      <div class="card col-md-6 col-lg-4 col-sm-12 mt-2" *ngFor="let tenant of allTenant">
          <div class="card-body">
             <h5 class="card-title">{{tenant.name}} {{tenant.lastname}}</h5>
             <p class="card-text"><i>EmpNo: {{tenant.stuff_no}}</i></p>
