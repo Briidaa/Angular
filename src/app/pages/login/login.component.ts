@@ -49,6 +49,19 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/admin']);
       }
       else {
+        Swal.fire(
+          {
+            title: 'TENANT NOT ALLOWED',
+            text: '',
+            timer: 4000,
+            showConfirmButton: false,
+            color: 'lightblue'
+          }
+        )
+
+        Swal.update({
+          icon: 'info'
+        })
         this.router.navigate(['/']);
       }
       this.ngxLoader.stop()

@@ -70,7 +70,7 @@ export class TenantComponent implements OnInit {
     + currentdate.getSeconds();
 
     let data = {
-      time_in: time,
+      time_out: time,
       checkedin: false,
       userid: id
     }
