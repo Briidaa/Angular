@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  devbaseUrl: "https://visitormash-app.herokuapp.com/api/visitor/"
+  devbaseUrl: "https://sapsbackend.herokuapp.com/api/visitor/"
 };
